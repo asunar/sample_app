@@ -3,10 +3,18 @@
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title><%= title %></title>
-    <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
-    <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+	<!-- Look for a file called app/views/layouts/_stylesheets.html.erb
+		evaluate its contents and insert the results into view		
+	-->
+	<%= render 'layouts/stylesheets' %>  
   </head>
   <body>
-    <%= yield %>
+	<div class="container">
+		<%= render 'layouts/header' %>
+		<div id="content" class="round">
+			<%= yield %>
+		</div>
+		<%= render 'layouts/footer' %>
+	</div>
   </body>
 </html>
